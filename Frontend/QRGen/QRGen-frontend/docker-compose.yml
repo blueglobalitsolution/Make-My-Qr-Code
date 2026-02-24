@@ -1,33 +1,18 @@
 version: '3.8'
 
 services:
-  qrgen-backend:
-    image: bgtuser/qrgen-backend:latest
-    container_name: qrgen-backend
+  qrgen:
+    image: bgtuser/qr-pro-generator:latest
+    container_name: qrgen
     restart: unless-stopped
     ports:
-      - "5000:5000"
+      - "${PORT:-2040}:${PORT:-2040}"
+    environment:
+      - PORT=${PORT:-2040}
+      - API_URL=${API_URL:-http://0.0.0.0:2040}
     healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:5000/api/health"]
+      test: ["CMD", "curl", "-f", "http://localhost:${PORT:-2040}/api/health"]
       interval: 30s
       timeout: 10s
       retries: 3
       start_period: 10s
-    networks:
-      - qrgen-network
-
-  qrgen-frontend:
-    image: bgtuser/qr-pro-generator:latest
-    container_name: qrgen-frontend
-    restart: unless-stopped
-    ports:
-      - "2040:3000"
-    depends_on:
-      qrgen-backend:
-        condition: service_healthy
-    networks:
-      - qrgen-network
-
-networks:
-  qrgen-network:
-    driver: bridge

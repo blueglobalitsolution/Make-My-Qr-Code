@@ -21,7 +21,7 @@ import QRCodeStyling from 'qr-code-styling';
 import { QRConfig, Preset } from './types';
 import { PRESETS, DEFAULT_URL, LOGO_PRESETS, DOT_TYPE_OPTIONS, CORNER_SQUARE_OPTIONS, CORNER_DOT_OPTIONS, QR_SHAPE_OPTIONS } from './constants';
 
-const API_URL = 'http://localhost:5000';
+const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
 
 const App: React.FC = () => {
   const [config, setConfig] = useState<QRConfig>({

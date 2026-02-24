@@ -1,0 +1,11 @@
+FROM python:3.12-slim
+
+WORKDIR /app
+
+COPY Backend/ ./Backend/
+
+RUN pip install flask flask-cors qrcode[pil] pillow
+
+EXPOSE 5000
+
+CMD ["python", "Backend/app.py"]

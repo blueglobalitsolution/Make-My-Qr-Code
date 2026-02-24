@@ -19,7 +19,7 @@ import {
 } from 'lucide-react';
 import QRCodeStyling from 'qr-code-styling';
 import { QRConfig, Preset } from './types';
-import { PRESETS, DEFAULT_URL, LOGO_PRESETS, DOT_TYPE_OPTIONS, CORNER_SQUARE_OPTIONS, CORNER_DOT_OPTIONS, QR_SHAPE_OPTIONS } from './constants';
+import { PRESETS, DEFAULT_URL, LOGO_PRESETS, DOT_TYPE_OPTIONS, CORNER_SQUARE_OPTIONS, CORNER_DOT_OPTIONS } from './constants';
 
 const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
 
@@ -36,7 +36,6 @@ const App: React.FC = () => {
     dotType: 'square',
     cornerSquareType: 'square',
     cornerDotType: 'square',
-    qrShape: 'square',
   });
 
   const [showRegisterModal, setShowRegisterModal] = useState(false);
@@ -113,7 +112,6 @@ const App: React.FC = () => {
         errorCorrectionLevel: config.level as any
       },
       margin: config.includeMargin ? 40 : 10,
-      shape: config.qrShape,
       image: logoDataUrl,
       imageOptions: {
         hideBackgroundDots: true,
@@ -359,8 +357,23 @@ const App: React.FC = () => {
               <QrCode className="w-12 h-12 text-slate-400 mx-auto mb-3 animate-pulse" />
               <p className="text-slate-600 font-medium text-sm">Enter URL to generate</p>
             </div>
-          </div>
-        )}
+                  {(config.logo || logoPresetId) && (
+                    <div className="flex items-center gap-3 p-3 bg-slate-50 rounded-xl border border-slate-200">
+                      <img
+                        src={getLogoDataUrl()}
+                        alt="Selected logo"
+                        className="w-10 h-10 object-contain rounded-lg bg-white p-1 border border-slate-200"
+                      />
+                      <div>
+                        <p className="text-sm font-medium text-slate-700">Logo applied</p>
+                        <p className="text-xs text-slate-500">
+                          {logoPresetId ? 'Color adapts to QR foreground' : 'Auto-scaled to 28% for scannability'}
+                        </p>
+                      </div>
+                    </div>
+                  )}
+                </div>
+              )}
       </div>
     </div>
   );
@@ -529,21 +542,6 @@ const App: React.FC = () => {
                     </div>
                   </div>
 
-                  {(config.logo || logoPresetId) && (
-                    <div className="flex items-center gap-3 p-3 bg-slate-50 rounded-xl border border-slate-200">
-                      <img
-                        src={getLogoDataUrl()}
-                        alt="Selected logo"
-                        className="w-10 h-10 object-contain rounded-lg bg-white p-1 border border-slate-200"
-                      />
-                      <div>
-                        <p className="text-sm font-medium text-slate-700">Logo applied</p>
-                        <p className="text-xs text-slate-500">
-                          {logoPresetId ? 'Color adapts to QR foreground' : 'Auto-scaled to 28% for scannability'}
-                        </p>
-                      </div>
-                    </div>
-                  )}
                 </div>
               )}
 
@@ -613,31 +611,6 @@ const App: React.FC = () => {
                             key={option.id}
                             onClick={() => setConfig(prev => ({ ...prev, cornerDotType: option.type }))}
                             className={`w-[40px] h-[40px] p-[5px] rounded-xl border-2 flex items-center justify-center transition-all hover:scale-105 ${config.cornerDotType === option.type
-                              ? 'border-pink-500 bg-pink-50 shadow-md'
-                              : 'border-slate-200 hover:border-pink-300 bg-white'
-                              }`}
-                            title={option.name}
-                          >
-                            <img src={previewUrl} alt={option.name} className="w-full h-full" />
-                          </button>
-                        );
-                      })}
-                    </div>
-                  </div>
-
-                  {/* QR Shape */}
-                  <div>
-                    <h3 className="text-sm font-medium text-slate-600 mb-3">QR Shape</h3>
-                    <div className="flex flex-wrap gap-2">
-                      {QR_SHAPE_OPTIONS.map((option) => {
-                        const previewUrl = 'data:image/svg+xml,' + encodeURIComponent(
-                          option.svgTemplate.replace(/{fgColor}/g, '#334155')
-                        );
-                        return (
-                          <button
-                            key={option.id}
-                            onClick={() => setConfig(prev => ({ ...prev, qrShape: option.type }))}
-                            className={`w-[40px] h-[40px] p-[5px] rounded-xl border-2 flex items-center justify-center transition-all hover:scale-105 ${config.qrShape === option.type
                               ? 'border-pink-500 bg-pink-50 shadow-md'
                               : 'border-slate-200 hover:border-pink-300 bg-white'
                               }`}

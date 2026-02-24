@@ -114,30 +114,6 @@ export const CORNER_SQUARE_OPTIONS: ShapeOption<CornerSquareType>[] = [
     svgTemplate: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="{fgColor}"><rect x="3" y="3" width="18" height="18" rx="6" stroke="{fgColor}" stroke-width="2" fill="none"/><rect x="7" y="7" width="10" height="10" rx="3" fill="{fgColor}"/></svg>'
   },
   {
-    id: 'rounded',
-    name: 'Rounded',
-    type: 'rounded',
-    svgTemplate: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="{fgColor}"><rect x="3" y="3" width="18" height="18" rx="4" stroke="{fgColor}" stroke-width="2" fill="none"/><rect x="7" y="7" width="10" height="10" rx="2" fill="{fgColor}"/></svg>'
-  },
-  {
-    id: 'dots',
-    name: 'Dots',
-    type: 'dots',
-    svgTemplate: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="{fgColor}"><circle cx="12" cy="6" r="4"/><circle cx="6" cy="18" r="4"/><circle cx="18" cy="18" r="4"/></svg>'
-  },
-  {
-    id: 'classy',
-    name: 'Classy',
-    type: 'classy',
-    svgTemplate: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="{fgColor}"><path d="M3 3L12 3L12 12L3 12Z"/><path d="M12 12L21 12L21 21L12 21Z"/></svg>'
-  },
-  {
-    id: 'classy-rounded',
-    name: 'Classy Rounded',
-    type: 'classy-rounded',
-    svgTemplate: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="{fgColor}"><path d="M3 3C3 3 12 3 12 12C12 3 21 3 21 3" stroke="{fgColor}" stroke-width="3" fill="none"/></svg>'
-  },
-  {
     id: 'none',
     name: 'None',
     type: null,
@@ -172,12 +148,6 @@ export const QR_SHAPE_OPTIONS: ShapeOption<QRShapeType>[] = [
     name: 'Square',
     type: 'square',
     svgTemplate: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="{fgColor}"><rect x="3" y="3" width="18" height="18" rx="2"/></svg>'
-  },
-  {
-    id: 'circle',
-    name: 'Circle',
-    type: 'circle',
-    svgTemplate: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="{fgColor}"><circle cx="12" cy="12" r="10"/></svg>'
   },
 ];
 

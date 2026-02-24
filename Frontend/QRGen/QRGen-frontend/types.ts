@@ -2,9 +2,9 @@
 export type ErrorCorrectionLevel = 'L' | 'M' | 'Q' | 'H';
 
 export type DotType = 'square' | 'rounded' | 'dots' | 'classy' | 'classy-rounded' | 'extra-rounded';
-export type CornerSquareType = 'square' | 'dot' | 'extra-rounded' | 'rounded' | 'dots' | 'classy' | 'classy-rounded' | null;
+export type CornerSquareType = 'square' | 'dot' | 'extra-rounded' | null;
 export type CornerDotType = 'square' | 'dot' | null;
-export type QRShapeType = 'square' | 'circle';
+export type QRShapeType = 'square';
 
 export interface QRConfig {
   url: string;

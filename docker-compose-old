@@ -1,0 +1,9 @@
+
+services:
+  qrgen-frontend:
+    image: bgtuser/qr-pro-generator:latest
+    container_name: qrgen-frontend
+    ports:
+      - "2040:3000"
+      - "5000:5000"
+    restart: always

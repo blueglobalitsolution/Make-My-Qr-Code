@@ -13,8 +13,6 @@ services:
     container_name: qrgen-frontend
     ports:
       - "2040:3000"
-    environment:
-      - VITE_API_URL=http://qrgen-backend:5000
     restart: always
     depends_on:
       - qrgen-backend

@@ -521,10 +521,10 @@ const App: React.FC = () => {
                   </div>
 
                   <div>
-                    <p className="text-sm text-slate-500 mb-3">Or choose a preset icon (adapts to QR color):</p>
+                    <p className="text-sm text-slate-500 mb-3">Or choose a preset icon:</p>
                     <div className="flex flex-wrap gap-2">
                       {LOGO_PRESETS.map((preset) => {
-                        const presetDataUrl = generateLogoDataUrl(preset.svgTemplate, config.fgColor);
+                        const presetDataUrl = generateLogoDataUrl(preset.svgTemplate, '#334155');
                         return (
                           <button
                             key={preset.id}
